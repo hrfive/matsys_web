@@ -1,0 +1,97 @@
+CREATE TABLE `material` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `MaterialCode` int(8) NOT NULL,
+    `MaterialName` varchar(100) NOT NULL,
+    `CategoryCode` int(4) NOT NULL,
+    `Quantity` int(10) NOT NULL,
+    `Remarks` varchar(100) NOT NULL,
+     PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `category` (
+    `CategoryCode` int(4) NOT NULL,
+    `CategoryName` char(30) NOT NULL,
+     PRIMARY KEY (`CategoryCode`)
+);
+
+CREATE TABLE `dept` (
+    `DeptCode` int(4) NOT NULL,
+    `DeptName` varchar(30) NOT NULL,
+    `ManagerName` char(30) NOT NULL,
+     PRIMARY KEY (`DeptCode`)
+);
+
+CREATE TABLE `materialdetail` (
+    `Id` int NOT NULL AUTO_INCREMENT,	
+    `MaterialCode` int(8) NOT NULL,
+    `MaterialName` varchar(100) NOT NULL,
+    `CategoryCode` int(4) NOT NULL,
+    `WorkingStatus` int NOT NULL,
+    `Color` char(10) DEFAULT NULL,
+    `Manufacturer` char(30) NOT NULL,
+    `PurchaseDate` Date NOT NULL,
+    `PurchasePrice` int(10) NOT NULL,
+    `SupplierCode` int(4) NOT NULL,
+    `CurrentValue` int(10) NOT NULL,
+    `MaintenanceId` varchar(10) DEFAULT NULL,
+    `TotalExpense` int(10) NOT NULL,
+    `DepreciationRate` varchar(10) NOT NULL,
+    `LastDepeciation` Date DEFAULT NULL,
+    `IssuedTo` int(4) DEFAULT NULL,
+    `Issued` char(3) NOT NULL,
+    `IssueDate` Date DEFAULT NULL,
+     PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `supplier` (
+    `SupplierCode` int(4) NOT NULL,
+    `SupplierName` varchar(30) NOT NULL,
+    `SupplierAddress1` varchar(30) NOT NULL,
+    `SupplierAddress2` varchar(30) NOT NULL,
+    `PostalCode` int(6) NOT NULL,
+    `PhoneNo` varchar(15) NOT NULL,
+     PRIMARY KEY (`SupplierCode`)
+);
+
+CREATE TABLE `maintenance` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `MaterialId` int NOT NULL,
+    `MaintenanceCost` int(10) NOT NULL,
+     PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `requirement` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `DeptCode` int(4) NOT NULL,
+    `MaterialCode` int NOT NULL,
+    `MaterialName` varchar(100) NOT NULL,
+    `Quantity` int(10) NOT NULL,
+    `Status` int NOT NULL,
+    `Remarks` varchar(100) NOT NULL,
+     PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `materialcode` (
+    `MaterialCode` int(8) NOT NULL,
+    `MaterialName` varchar(100) NOT NULL,
+     PRIMARY KEY (`MaterialCode`)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

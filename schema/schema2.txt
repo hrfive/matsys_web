@@ -1,0 +1,121 @@
+﻿CREATE TABLE `patientregister` (
+    `Id` int NOT NULL,	
+    `Name` varchar(100) NOT NULL,
+	`FatherName` varchar(100) NOT NULL,
+	`MotherName` varchar(100) NOT NULL,
+	`Gender` char(1) NOT NULL,
+    `PhNo` char(10) NOT NULL,
+    `Hno` varchar(20) NOT NULL,
+    `Veng` varchar(100) NOT NULL,
+	`Khua` varchar(100) NOT NULL,
+	`VC` varchar(100) NOT NULL,
+    `District` varchar(100) NOT NULL,
+    `DOB` Date NOT NULL,
+    PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `Opd` (
+    `Id` bigint NOT NULL,
+	`patId` int NOT NULL,
+	`age` varchar(10) NOT NULL,
+	`RoomNo` int(10) NOT NULL,
+	`Gender` char(1) NOT NULL,
+	`Category` char(10) NOT NULL,
+	`Payment` char(10) NOT NULL,
+	`Doctor` varchar(100) NOT NULL,
+	`Advice` varchar(10) NOT NULL,
+    `OpdDt` Date NOT NULL,
+    PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `Casualty` (
+    `Id` bigint NOT NULL,
+	`patId` int NOT NULL,
+	`age` varchar(10) NOT NULL,
+	`Gender` char(1) NOT NULL,
+	`Category` char(10) NOT NULL,
+	`NatureOfCase` char(30),
+	`Advice` varchar(10),
+	`Payment` varchar(10) DEFAULT 'Unpaid',
+    `TimeOfArrival` time,
+	`TimeOfExamination` time,
+	`TimeOfAdvice` time,
+	`CasualtyDt` Date NOT NULL,
+    PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `PatientDiagnosis` (
+    `Id` int NOT NULL AUTO_INCREMENT,	
+    `IdOpd` bigint NOT NULL,
+	`DName` varchar(100) NOT NULL,
+    PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `Prescription` (
+    `Id` int NOT NULL AUTO_INCREMENT,	
+    `OpdId` bigint NOT NULL,
+	`MName` varchar(100) NOT NULL,
+	`Dose` varchar(100),
+	`Duration` varchar(100),
+	`Interval` varchar(100),
+    PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `Investigation` (
+    `Id` int NOT NULL AUTO_INCREMENT,	
+    `OpdId` bigint NOT NULL,
+	`patId` int NOT NULL,
+	`IName` varchar(100) NOT NULL,
+	`Category` char(20) NOT NULL,
+	`RateOpd` decimal(10,2) NOT NULL,
+	`RateIndoor` decimal(10,2) NOT NULL,
+	`Result` varchar(100) DEFAULT ' ',
+	`Payment` varchar(10) DEFAULT 'Unpaid',
+	`Date` Date NOT NULL,
+    PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `RoomNo` (
+
+	`Id` int NOT NULL AUTO_INCREMENT Primary key,
+	`RNo` int NOT NULL,
+	`Active` bit(1) NOT NULL
+    
+);
+
+CREATE TABLE `Employee` (
+    `Id` int NOT NULL AUTO_INCREMENT,	
+    `Name` varchar(100) NOT NULL,
+	`Designation` varchar(100) NOT NULL,
+	`Email` varchar(100) NOT NULL,
+	`Gender` char(1) NOT NULL,
+	`DOB` Date NOT NULL,
+    `MobNo` char(10) NOT NULL,
+    `Active` bit(1) NOT NULL,    
+    PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `LabInvest` (
+    `Id` int NOT NULL AUTO_INCREMENT,	
+    `IName` varchar(50) NOT NULL,
+	`Category` char(20) NOT NULL,
+	`RateOpd` decimal(10,2) NOT NULL,
+	`RateIndoor` decimal(10,2) NOT NULL,    
+    PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `Medicine` (
+    `Id` int NOT NULL AUTO_INCREMENT,	
+    `Dcode` int NOT NULL,
+	`MName` varchar(250) NOT NULL,
+	`USize` varchar(10) NOT NULL,
+	`MRP` decimal(10,2) NOT NULL,
+	`TCategory` varchar(100) NOT NULL,
+    PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `Diagnosis` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+	`DName` varchar(100) NOT NULL,
+    PRIMARY KEY (`Id`)
+);
